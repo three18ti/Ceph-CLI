@@ -1,11 +1,8 @@
 package Ceph::CLI;
 use Moose;
-# ABSTRACT: turns baubles into trinkets
+# ABSTRACT: Perl interface for Ceph cli commands
 use strict;
 use warnings;
-
-
-
 
 
 no Moose;

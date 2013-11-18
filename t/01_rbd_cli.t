@@ -8,13 +8,13 @@ use Test::Output;
 
 use lib 'lib';
 
-BEGIN { use_ok 'Ceph::CLI::RBD' }
+BEGIN { use_ok 'Ceph::RBD::CLI' }
 
 my $image_name = 'perl_rbd_test';
 my $snap_name = 'perl_rbd_snap';
 my $pool_name = 'perl_cli_test';
 
-my $rbd = new_ok 'Ceph::CLI::RBD' => [ 
+my $rbd = new_ok 'Ceph::RBD::CLI' => [ 
                         'pool_name'     => $pool_name, 
                         'image_name'    => $image_name,
                         'snap_name'     => $snap_name,
@@ -23,6 +23,7 @@ my $rbd = new_ok 'Ceph::CLI::RBD' => [
 # verify we can create and remove an image
 stdout_is { map { say } $rbd->ls } "", "Verify no images in $pool_name";
 stdout_is { $rbd->image_create(undef, 5120); } "", "Create image in $pool_name";
+stderr_like { $rbd->image_create(undef, 5120) } qr/rbd: create error:/, "Can't create image that exists";
 stdout_is { map { say } $rbd->ls } "perl_rbd_test\n", "Image exists";
 stderr_like { $rbd->image_delete } qr/done/, "Remove Image";
 stdout_is { map { say } $rbd->ls } "", "Verify image has been removed";
@@ -41,6 +42,5 @@ stderr_like { $rbd->image_delete } qr/failed/, "Image not removed, it has snapsh
 stderr_like { $rbd->snap_purge }  qr/done/, "Snapshots purged";
 stderr_like { $rbd->image_delete } qr/done/, "Remove Image";
 stderr_like { $rbd->image_delete($image_name . 1) } qr/done/, "Remove Image";
-
 
 done_testing;

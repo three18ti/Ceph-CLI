@@ -1,4 +1,4 @@
-package Ceph::CLI::RBD;
+package Ceph::RBD::CLI;
 use 5.010;
 use Moose;
 # ABSTRACT: turns baubles into trinkets
@@ -40,8 +40,7 @@ sub make_parent {
     my $image_name  = shift // $self->image_name;
     my $pool        = shift // $self->pool_name;
     $self->snap_create($snap_name, $image_name, $pool);
-    $self->snap_protect($snap_name, $image_name, $pool);
-    
+    $self->snap_protect($snap_name, $image_name, $pool);    
 }
 
 sub image_create {
