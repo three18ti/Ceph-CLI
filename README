@@ -10,7 +10,7 @@ You can create the test pool by running
 
 The module itself assumes a default pool of "libvirt-pool", this can be overridden at time of instantiation with the "pool_name" parameter.
 
-```
+````
     #!/usr/bin/env perl
     use 5.010;
     use strict;
@@ -36,4 +36,4 @@ The module itself assumes a default pool of "libvirt-pool", this can be overridd
 
     # you can override setting by passing the at sub call
     $rbd->image_create(undef, 4096)
-```
+````
