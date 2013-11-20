@@ -27,6 +27,9 @@ has 'format'        => (
     default => 2,
 );
 
+has 'parent_name'   => (
+    isa     => 'Str',
+);
 
 sub ls {
     my $self        = shift;
@@ -93,6 +96,14 @@ sub snap_ls {
     my $image_name  = shift // $self->image_name;
     my $pool        = shift // $self->pool_name;
     `rbd snap ls $pool/$image_name`;
+}
+
+sub snap_children {
+    my $self        = shift;
+    my $snap_name   = shift // $self->snap_name;
+    my $image_name  = shift // $self->image_name;
+    my $pool        = shift // $self->pool_name;
+    `rbd snap children $pool/$image_name\@$snap_name`;
 }
 
 sub snap_create {
