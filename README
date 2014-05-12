@@ -1,3 +1,6 @@
+!https://badge.fury.io/gh/three18ti%2FCeph-CLI.svg!:http://badge.fury.io/gh/three18ti%2FCeph-CLI
+
+
 This is a quick hack because I need a Perl interface to Ceph.
 
 You should really be using Ceph::RADOS, but it's incomplete at the moment and taking longer than I expected to extend.
