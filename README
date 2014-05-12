@@ -1,5 +1,5 @@
 !https://badge.fury.io/gh/three18ti%2FCeph-CLI.svg!:http://badge.fury.io/gh/three18ti%2FCeph-CLI
-
+!https://travis-ci.org/three18ti/Ceph-CLI.svg?branch=master!:https://travis-ci.org/three18ti/Ceph-CLI
 
 This is a quick hack because I need a Perl interface to Ceph.
 
